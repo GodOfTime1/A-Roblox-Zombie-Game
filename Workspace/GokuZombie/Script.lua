@@ -63,11 +63,11 @@ local function Attack(Target)
 	
 	local Distance = (TargetRootPart.Position - rootPart.Position).Magnitude
 	
-	if Target.Humanoid.Health > 0 and Distance <= 2 then
+	if Target.Humanoid.Health > 0 and Distance <= 1.5 then
 		Target.Humanoid:TakeDamage(15)
 	end
 	
-	wait(1.5)
+	wait(2)
 	Attacking = false
 	
 end
@@ -83,7 +83,7 @@ RunService.Heartbeat:Connect(function()
 	if TargetHumanoid == nil then return end
 	
 	local Distance = (TargetRootPart.Position - rootPart.Position).Magnitude
-	if Distance <= 5 then
+	if Distance <= 3 then
 		Attack(NearestPlayer)
 	else
 		MoveTo(TargetRootPart.Position)
