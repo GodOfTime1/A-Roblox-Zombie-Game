@@ -54,11 +54,20 @@ local function Attack(Target)
 	
 	task.wait(0.35)
 	
-	if Target.Humanoid.Health > 0 then
-		Target.Humanoid:TakeDamage(25)
+	local NearestPlayer = DetectPlayer()
+	if NearestPlayer == nil then return end
+	
+	local TargetRootPart = NearestPlayer:WaitForChild("HumanoidRootPart")
+	local TargetHumanoid = NearestPlayer:WaitForChild("Humanoid")
+	if TargetHumanoid == nil then return end
+	
+	local Distance = (TargetRootPart.Position - rootPart.Position).Magnitude
+	
+	if Target.Humanoid.Health > 0 and Distance <= 2 then
+		Target.Humanoid:TakeDamage(15)
 	end
 	
-	wait(3)
+	wait(1.5)
 	Attacking = false
 	
 end
