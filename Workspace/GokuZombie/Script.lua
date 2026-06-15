@@ -7,7 +7,7 @@ local npc = script.Parent
 local humanoid = npc:WaitForChild("Humanoid")
 local rootPart = npc:WaitForChild("HumanoidRootPart")
 
-humanoid.WalkSpeed = 14
+humanoid.WalkSpeed = 16
 
 local Animation = script.Parent.AttackAnimation
 local LoadedAnimation = humanoid:LoadAnimation(Animation)
@@ -74,7 +74,7 @@ RunService.Heartbeat:Connect(function()
 	if TargetHumanoid == nil then return end
 	
 	local Distance = (TargetRootPart.Position - rootPart.Position).Magnitude
-	if Distance <= 3 then
+	if Distance <= 5 then
 		Attack(NearestPlayer)
 	else
 		MoveTo(TargetRootPart.Position)
